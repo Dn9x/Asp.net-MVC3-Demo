@@ -1,0 +1,123 @@
+﻿@model UUMS_SSO.Models.LogOnModel
+
+<!-- ui-dialog -->
+<div id="dialog" title="SSO單點登錄">
+<form id="form" action="@Url.Content("~/Home/Login")" method="post">
+<table width="350" height="180" border="0">
+    <tr>
+        <td height="24">注：當用戶有開通Notes時，Notes帳號即為統一帳號。</td>
+    </tr>
+    <tr>
+        <td height="24">
+            <span class="error">
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td height="21"><label for="Txt_Name">帳 號「Notes帳號（如有）?」:</label></td>
+    </tr>
+    <tr>
+        <td height="28">
+            <input type="text" name="UserName" class="text ui-widget-content ui-corner-all" style="width:340px; height:26px;" id="Txt_Name" />
+        </td>
+    </tr>
+    <tr>
+        <td height="21"><label for="Txt_Pswd">密 碼「Notes密碼（如有）?」:</label></td>
+    </tr>
+    <tr>
+        <td height="28">
+            <input type="password" name="Password" class="text ui-widget-content ui-corner-all" style="width:340px; height:26px;" id="Txt_Pswd" />
+            <input type="hidden" name="type" id="type" />
+        </td>
+    </tr>
+</table>
+</form>
+</div>
+
+<script>
+    $(function () {
+        $("#dialog").dialog({
+            autoOpen: false,
+            width: 400,
+            buttons: [
+			{
+			    text: "登錄",
+			    click: function () {
+			        checkLogin(this);
+			    }
+			},
+			{
+			    text: "取消",
+			    click: function () {
+			        $(this).dialog("close");
+			        $(document).progressDialog.hideDialog();
+			    }
+			}
+		]
+        });
+
+        // Link to open the dialog
+        $("#dialog-link").click(function (event) {
+            $(document).progressDialog.showDialog();
+            $("#dialog").dialog("open");
+            event.preventDefault();
+        });
+
+        // Link to open the dialog
+        $(".dialog_link").click(function (event) {
+            $("#type").val($(this).attr("title"));
+            $(document).progressDialog.showDialog();
+            $("#dialog").dialog("open");
+            event.preventDefault();
+        });
+
+        var t = getUrlPara("t");
+
+        if (t == "login") {
+            $(document).progressDialog.showDialog();
+            $("#dialog").dialog("open");
+        }
+    });
+
+    function checkLogin(op) {
+        var name = $("#Txt_Name").val();
+        var pswd = $("#Txt_Pswd").val();
+
+        if (name.length == 0) {
+            $(".error").html("用戶名輸入不能為空");
+        } else if (pswd.length == 0) {
+            $(".error").html("密碼輸入不能為空");
+        } else {
+            //加載初始
+        $.post(
+                "/Home/CheckLogin",
+                { "name": name, "pswd": pswd },
+                function (data, status) {
+                    if (status = "success") {
+                        if (data == "Y") {
+                            document.getElementById("form").submit();
+                            $(op).dialog("close");
+                        } else {
+                            $(".error").html(data);
+                        }
+
+                    }
+                }
+            ).complete(function () {
+                if ($("#type").val().length != 0) {
+                    window.open($("#type").val(), "_blank");
+                    
+                }
+            });
+        }
+    }
+
+    //腳本獲取地址欄值
+    function getUrlPara(paraName){  
+        var sUrl  =  location.href; 
+        var sReg  =  "(?:\\?|&){1}"+paraName+"=([^&]*)" 
+        var re=new RegExp(sReg,"gi"); 
+        re.exec(sUrl); 
+        return RegExp.$1; 
+    }
+</script>

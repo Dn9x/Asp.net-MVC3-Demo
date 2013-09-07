@@ -1,0 +1,29 @@
+﻿
+<div class="header_logo">
+    <img src="@Url.Content("~/Content/Images/psa500x60.png")" />
+    <img src="@Url.Content("~/Content/Images/sso230x60.png")" />
+</div>
+
+<div class="header_login">
+@if(Request.IsAuthenticated) {
+    <div class="header_login_list list1">
+        目前登入：
+    </div>
+    <div class="header_login_list">
+       <strong>@User.Identity.Name</strong>
+    </div>
+    <div class="header_login_list">
+        <a href="@Url.Content("~/Home/LogOff")">登出</a>
+    </div>
+}
+else
+{
+    <div class="header_login_list list1">
+        <a id="dialog-link">登錄</a>
+    </div>
+    <div class="header_login_list"></div>
+    <div class="header_login_list">
+        <a>統一帳號(Notes郵箱)申請</a>
+    </div>
+}
+</div>

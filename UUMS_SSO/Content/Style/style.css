@@ -1,0 +1,187 @@
+﻿body {
+    background-color: #ffffff;
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #696969;
+	background-image: url(../Images/bg.png);
+}
+
+.page
+{
+	width:98%;
+	margin:0px auto;
+	height:800px;
+	min-height:800px;
+	border:0px solid #ccc;
+	z-index:1;
+}
+
+
+/*********************************** css:layout pub ****************************************/
+
+.ind
+{
+	width:900px;
+	margin:10px auto;
+	border:0px solid #ccc;
+	z-index:2;
+}
+
+
+/*********************************** css:layout header ****************************************/
+.header
+{
+	height:80px;
+	min-height:80px;
+	line-height:80px;
+}
+
+.header_logo
+{
+	width:740px;
+	float:left;
+	border:0px solid #ccc;
+	margin-top:10px;
+	margin-left:2px;
+	height:61px;
+}
+.header_login
+{
+	float:left;
+	width:150px;
+	border:0px solid #ccc;
+	margin-top:10px;
+	margin-left:2px;
+	height:61px;
+	line-height:61px;
+	font-size:12px;
+}
+
+.header_login a
+{
+    color: #696969;
+}
+
+.header_login_list
+{
+	width:148px;
+	height:18px;
+	margin:0px auto;
+	line-height:18px;
+	border:0px solid #ccc;
+}
+.header_login_list a
+{
+	cursor:pointer;
+}
+
+.list1{margin-top:3px;}
+
+
+/*********************************** css:layout main ****************************************/
+.main
+{
+	height:600px;
+	min-height:600px;
+	font-size:12px;
+	border:1px solid #ccc;
+}
+
+.div_link_area
+{
+    font-size: 100%;
+	float:left;
+	width:220px;
+	margin:5px 1px 1px 1px;
+}
+
+.div_link_area ul li
+{
+	padding:3px 0px 5px 0px;
+	text-decoration:none;
+	color:  Maroon;
+}
+
+.div_link_area ul li ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+	font-weight:normal;
+}
+
+.div_link_area ul li ul li
+{
+	list-style-type: none;
+	padding:2px 0px 3px 0px;
+	border-bottom:1px dashed #999999;
+	color:#444;
+	text-decoration:none;
+}
+
+.div_link_area ul li ul li.lotus
+{
+	/*text-indent:16px;*/	
+	padding:2px 0px 3px 20px;	
+	background-repeat:no-repeat;
+	background-image:url(../images/lotus10x10.png);
+	background-position:left center; 
+}
+
+.div_link_area ul li a:link{
+	 color:#444;
+	 text-decoration:none;
+}
+
+.div_link_area ul li a:visited{
+	 color:#800080;
+	 text-decoration:none;
+}
+
+.div_link_area ul li a:hover{
+	color:blue;
+	text-decoration:underline;
+}
+#div_link_area_bottom 
+{
+	font-size: 100%;	
+	clear:both;
+	border-top: silver 1px dashed;
+	color:Black;	
+}
+#div_link_area_bottom  ul li
+{
+	list-style-type:none;	
+	float:left;
+	padding:3px 5px 3px 5px;	
+}
+
+.lotus a
+{
+	cursor:pointer;
+}
+
+#div_link_area_bottom ul li a
+{
+	color:#444;
+}
+
+
+/*********************************** css:layout dialog ****************************************/
+#dialog table
+{
+	font-size:11px;
+}
+.error{color:Red;}
+
+
+/*********************************** css:layout footer ****************************************/
+.footer
+{
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#bbb;
+	font-size:12px;
+}
